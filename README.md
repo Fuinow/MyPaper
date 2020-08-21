@@ -1,4 +1,7 @@
 # MyPaper
+2020-08-21 [WEB 漏扫 payload]
+(https://github.com/Fuinow/MyPaper/blob/master/WEB%E6%BC%8F%E6%89%ABpayload%E6%94%B6%E9%9B%86.md)
+
 2020-03-30 [从 Dirsearch 看目录扫描](https://github.com/Fuinow/MyPaper/blob/master/%E4%BB%8Edirsearch%E7%9C%8B%E7%9B%AE%E5%BD%95%E6%89%AB%E6%8F%8F/%E4%BB%8Edirsearch%E7%9C%8B%E7%9B%AE%E5%BD%95%E6%89%AB%E6%8F%8F.md)
 
 2019-12-12 [基于 FoFa 的自动化指纹提取](https://github.com/Fuinow/MyPaper/blob/master/%E5%9F%BA%E4%BA%8Efofa%E7%9A%84%E8%87%AA%E5%8A%A8%E5%8C%96%E6%8C%87%E7%BA%B9%E6%8F%90%E5%8F%96/%E5%9F%BA%E4%BA%8Efofa%E7%9A%84%E8%87%AA%E5%8A%A8%E5%8C%96%E6%8C%87%E7%BA%B9%E6%8F%90%E5%8F%96.md)
