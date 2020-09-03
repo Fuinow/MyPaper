@@ -1,4 +1,6 @@
 # MyPaper
+2020-09-03 [安全产品绕过的一些思路](https://github.com/Fuinow/MyPaper/blob/master/%E5%AE%89%E5%85%A8%E4%BA%A7%E5%93%81%E7%BB%95%E8%BF%87%E7%9A%84%E4%B8%80%E4%BA%9B%E6%80%9D%E8%B7%AF/%E5%AE%89%E5%85%A8%E4%BA%A7%E5%93%81%E7%BB%95%E8%BF%87%E7%9A%84%E4%B8%80%E4%BA%9B%E6%80%9D%E8%B7%AF.md)
+
 2020-08-21 [WEB 漏扫 payload 收集](https://github.com/Fuinow/MyPaper/blob/master/WEB%E6%BC%8F%E6%89%ABpayload%E6%94%B6%E9%9B%86.md)
 
 2020-03-30 [从 Dirsearch 看目录扫描](https://github.com/Fuinow/MyPaper/blob/master/%E4%BB%8Edirsearch%E7%9C%8B%E7%9B%AE%E5%BD%95%E6%89%AB%E6%8F%8F/%E4%BB%8Edirsearch%E7%9C%8B%E7%9B%AE%E5%BD%95%E6%89%AB%E6%8F%8F.md)
